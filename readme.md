@@ -1,5 +1,9 @@
 # Cloud Computing Management System - master
 CCMS主控端，受控端见：https://github.com/yzsme/ccms-slave-ce
+## 截图
+![dashboard.png](https://i.loli.net/2019/08/11/i8mwWKtNcBnlH1Y.png)
+
+![charts.png](https://i.loli.net/2019/08/11/Ka2szurxbHS7eko.png)
 ## 部署
 以下部署步骤以Debian Stretch为例。
 ### 安装所需程序
