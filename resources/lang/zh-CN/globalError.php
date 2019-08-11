@@ -1,0 +1,53 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * Date: 19-3-27
+ * Time: 上午10:29
+ */
+
+return [
+    \App\Constants\GlobalErrorCode::UNAUTHORIZED_REQUEST => "未授权的操作",
+    \App\Constants\GlobalErrorCode::OPERATION_REQUEST_LIMIT => "目标对象当前仍有未处理完成的操作",
+    \App\Constants\GlobalErrorCode::CDROM_NOT_EXISTS => "指定的CDROM不存在",
+    \App\Constants\GlobalErrorCode::FLOPPY_NOT_EXISTS => "指定的Floppy不存在",
+    \App\Constants\GlobalErrorCode::MEDIA_NOT_EXISTS => "指定的虚拟介质不存在",
+    \App\Constants\GlobalErrorCode::FIRST_IP_IN_ANOTHER_POOL_RANGE => "首IP处于另一个地址池范围内",
+    \App\Constants\GlobalErrorCode::LAST_IP_IN_ANOTHER_POOL_RANGE => "末IP处于另一个地址池范围内",
+    \App\Constants\GlobalErrorCode::LAST_IP_SMALLER_THAN_ASSIGNED_IP => "此地址池已分配的IP范围已超出所指定的可用范围",
+    \App\Constants\GlobalErrorCode::Q35_NOT_SUPPORT_IDE => "实例当前使用的芯片组Q35+ICH9不支持IDE控制器",
+    \App\Constants\GlobalErrorCode::POWER_OFF_INSTANCE_IS_REQUIRED => "此操作不可应用于运行中的实例，请先关闭目标实例的电源",
+    \App\Constants\GlobalErrorCode::VOLUME_CAN_NOT_ATTACH_TO_TARGET_INSTANCE => "卷不可连接到所指定的实例",
+    \App\Constants\GlobalErrorCode::VOLUME_ALREADY_ATTACH_TO_AN_INSTANCE => "卷已连接到另一个实例",
+    \App\Constants\GlobalErrorCode::IP_ADDRESS_UNBINDABLE => "所指定的IP地址不可解绑",
+    \App\Constants\GlobalErrorCode::IP_ADDRESS_ALREADY_BIND => "所指定的IP地址已绑定另一个实例",
+    \App\Constants\GlobalErrorCode::IN_PROTECTED_MODE => "所指定的对象处于保护模式，不可执行此操作",
+    \App\Constants\GlobalErrorCode::PRIMARY_BOOTABLE_DISK_NOT_FOUND => "未找到首选启动盘，请到卷页面指定首选启动盘",
+    \App\Constants\GlobalErrorCode::POWER_ON_INSTANCE_AND_OS_STARTED_IS_REQUIRED => "此操作要求实例的操作系统处于运行状态，请先启动实例",
+    \App\Constants\GlobalErrorCode::PUBLIC_IMAGE_NOT_FOUND => "指定的公共镜像不存在",
+    \App\Constants\GlobalErrorCode::COMPUTE_NODE_ALREADY_EXISTS => "此节点已存在",
+    \App\Constants\GlobalErrorCode::ZERO_FEE => "金额数值过小，请提高金额后再次尝试",
+    \App\Constants\GlobalErrorCode::INSUFFICIENT_RESOURCE => "暂时无法分配所请求的资源，请稍后重试",
+    \App\Constants\GlobalErrorCode::LOCKED => "暂时无法操作目标对象，如有疑问请提交工单",
+    \App\Constants\GlobalErrorCode::CREDIT => "帐号当前处于欠费状态，请先充值",
+    \App\Constants\GlobalErrorCode::REFUND_EXISTS => "充值订单存在退款，不可执行此操作",
+    \App\Constants\GlobalErrorCode::PENDING_REFUND_EXISTS => "充值订单存在待定的退款，不可执行此操作",
+    \App\Constants\GlobalErrorCode::INVALID_PAYMENT_TRADE_STATUS => "充值订单当前的状态不支持此操作",
+    \App\Constants\GlobalErrorCode::IS_BEING_CHARGED => "目标对象正忙，请稍后再试",
+    \App\Constants\GlobalErrorCode::RELEASE_ALL_RESOURCE_IS_REQUIRED => "账号下仍有未释放的实例/卷或IP，请先释放掉所有资源后再提交请求",
+    \App\Constants\GlobalErrorCode::CAN_NOT_DELETE_SELF => "不可删除自己的帐号",
+    \App\Constants\GlobalErrorCode::NO_SUPER_ADMINISTRATOR => "执行此操作后系统将不存在系统管理员",
+    \App\Constants\GlobalErrorCode::QUOTA_EXCEEDED => "所请求的资源数量已超出当前用户所设定的配额",
+    \App\Constants\GlobalErrorCode::PACKAGE_OUT_OF_STOCK => "所选定的实例规格已售罄",
+    \App\Constants\GlobalErrorCode::MIN_CREDIT_REQUIRED => "要执行此操作，帐号余额不可少于:min，当前仅有:max",
+    \App\Constants\GlobalErrorCode::NEGATIVE_CREDIT_OPERATION => "余额不足，无法执行此操作",
+    \App\Constants\GlobalErrorCode::PACKAGE_IS_BEING_USED_BY_INSTANCES => "当前仍有实例在使用将被删除的规格，不可删除",
+    \App\Constants\GlobalErrorCode::HAS_NODES => "被删除的对象下仍有节点，不可删除",
+    \App\Constants\GlobalErrorCode::COMPUTE_INSTANCE_INVALID_STATUS => "实例当前的状态不支持此操作",
+    \App\Constants\GlobalErrorCode::LOCAL_VOLUME_INVALID_STATUS => "本地卷当前的状态不支持此操作",
+    \App\Constants\GlobalErrorCode::NO_AVAILABLE_DEPARTMENT => "如需删除此部门，请先删除此部门下的所有工单",
+    \App\Constants\GlobalErrorCode::NODE_OFFLINE => "节点已离线，请稍后再试",
+    \App\Constants\GlobalErrorCode::INSUFFICIENT_PUBLIC_IP_V4 => "公网IPv4地址不足",
+    \App\Constants\GlobalErrorCode::INSUFFICIENT_PUBLIC_IP_V6 => "公网IPv6地址不足",
+    \App\Constants\GlobalErrorCode::INSUFFICIENT_PRIVATE_IP_V4 => "内网IPv4地址不足",
+    \App\Constants\GlobalErrorCode::INSUFFICIENT_PRIVATE_IP_V6 => "内网IPv6地址不足",
+];

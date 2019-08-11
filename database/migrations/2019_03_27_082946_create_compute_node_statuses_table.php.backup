@@ -1,0 +1,53 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateComputeNodeStatusesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('compute_node_statuses', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('compute_node_id');
+            $table->timestamp('created_at')->nullable();
+
+            $table->float('one_minute_load_average');
+            $table->float('five_minute_load_average');
+            $table->float('fifteen_minute_load_average');
+
+            $table->float('cpu_usage_percentage');
+
+            $table->unsignedInteger('memory_free_in_mib_unit');
+            $table->float("memory_usage_percentage");
+            $table->unsignedInteger('disk_free_in_mib_unit');
+            $table->float("disk_usage_percentage");
+
+            $table->unsignedInteger("running_instance_count");
+
+            $table
+                ->foreign("compute_node_id")
+                ->references("id")
+                ->on("compute_nodes")
+                ->onUpdate("cascade")
+                ->onDelete("cascade")
+            ;
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('compute_node_statuses');
+    }
+}

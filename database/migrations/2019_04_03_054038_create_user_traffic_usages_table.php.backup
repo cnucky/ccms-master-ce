@@ -1,0 +1,61 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateUserTrafficUsagesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('user_traffic_usages', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('traffic_share_group_id')->nullable();
+            $table->timestamp('date')->nullable();
+
+            $table->bigInteger('rx_bytes_2_charge')->default(0);
+            $table->bigInteger('charged_rx_byte_count')->default(0);
+
+            $table->bigInteger('tx_bytes_2_charge')->default(0);
+            $table->bigInteger('charged_tx_byte_count')->default(0);
+
+            \App\Utils\ChargeMigration::createChargeColumn($table, "user_traffic_usages");
+
+            $table->timestamps();
+
+            $table->unique(["user_id", "traffic_share_group_id", "date"]);
+
+            $table
+                ->foreign("user_id")
+                ->references("id")
+                ->on("users")
+                ->onUpdate("cascade")
+                ->onDelete("cascade")
+            ;
+
+            $table
+                ->foreign("traffic_share_group_id")
+                ->references("id")
+                ->on("traffic_share_groups")
+                ->onUpdate("cascade")
+                ->onDelete("set null")
+            ;
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('user_traffic_usages');
+    }
+}

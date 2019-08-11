@@ -1,0 +1,83 @@
+<template>
+    <div class="ui grid">
+        <div class="six wide column">
+            <h1>创建区域</h1>
+        </div>
+        <div class="sixteen wide column">
+            <semantic-ui-message type="positive" v-bind:messages="positive"></semantic-ui-message>
+            <semantic-ui-message type="negative" v-bind:messages="errors"></semantic-ui-message>
+
+            <form class="ui form" method="post" :action="route('regions.store')" v-on:submit.prevent="submit" id="region_form">
+                <csrf-field></csrf-field>
+
+                <div class="ui two fields">
+                    <div class="ui field">
+                        <label class="required">名称</label>
+                        <input type="text" name="name" v-model="form_data.name" required autofocus>
+                    </div>
+
+                    <div class="ui field">
+                        <label>图标类</label>
+                        <input type="text" v-model="form_data.icon_class">
+                    </div>
+                </div>
+
+                <div class="ui field">
+                    <label>描述</label>
+                    <textarea name="description" v-model="form_data.description" maxlength="255"></textarea>
+                </div>
+
+                <semantic-ui-button class="ui fluid green submit button" v-bind:isLoading="isLoading">创建区域</semantic-ui-button>
+            </form>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "Create",
+        data: function () {
+            return {
+                form_data: {
+                    name: "",
+                    description: "",
+                },
+                isLoading: false,
+                positive: {},
+                errors: {},
+            }
+        },
+        methods: {
+            submit: function () {
+                this.positive = {};
+                this.errors = {};
+                this.isLoading = true;
+                axios
+                    .post(route('regions.store'), this.form_data, { vueInstance: this })
+                    .then((response) => {
+                        if (response.data.result) {
+                            this.positive = {0: "区域创建成功"};
+                            this.reset();
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+                    .then(() => {
+                        this.isLoading = false;
+                    })
+                ;
+            },
+            reset: function () {
+                this.form_data = {
+                    name: "",
+                    description: "",
+                };
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>

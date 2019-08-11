@@ -1,0 +1,15 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * Date: 19-2-15
+ * Time: 上午12:04
+ */
+
+namespace App\Constants;
+
+
+use App\Constants\ComputeInstance\SetupRequestStatusCode;
+
+interface ComputeInstanceSetupRequestStatusCode extends SetupRequestStatusCode
+{
+}

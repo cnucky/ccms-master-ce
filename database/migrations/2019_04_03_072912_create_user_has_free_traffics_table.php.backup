@@ -1,0 +1,48 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateUserHasFreeTrafficsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('user_has_free_traffics', function (Blueprint $table) {
+            $table->increments('id');
+
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('traffic_share_group_id')->nullable();
+
+            $table->bigInteger('free_rx_byte_count')->default(0);
+            $table->bigInteger('free_tx_byte_count')->default(0);
+
+            $table
+                ->foreign("traffic_share_group_id")
+                ->references("id")
+                ->on("traffic_share_groups")
+                ->onUpdate("cascade")
+                ->onDelete("set null")
+            ;
+
+            $table->timestamps();
+
+            $table->unique(["user_id", "traffic_share_group_id"]);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('user_has_free_traffics');
+    }
+}

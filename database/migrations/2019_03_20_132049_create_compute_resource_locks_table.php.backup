@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateComputeResourceLocksTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('compute_resource_locks', function (Blueprint $table) {
+            $table->unsignedSmallInteger('resource_type');
+            $table->unsignedInteger('resource_id');
+            $table->unsignedInteger('operation_id');
+
+            $table->primary(['resource_type', 'resource_id']);
+            $table->index('operation_id');
+
+            $table->timestamps();
+
+            $table
+                ->foreign("operation_id")
+                ->references("id")
+                ->on("compute_resource_operation_requests")
+                ->onUpdate("cascade")
+                ->onDelete("cascade")
+            ;
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('compute_resource_locks');
+    }
+}

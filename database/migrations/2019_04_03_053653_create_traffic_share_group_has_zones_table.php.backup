@@ -1,0 +1,47 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateTrafficShareGroupHasZonesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('traffic_share_group_has_zones', function (Blueprint $table) {
+            $table->unsignedInteger('traffic_share_group_id');
+            $table->unsignedInteger('zone_id');
+
+            $table
+                ->foreign("traffic_share_group_id")
+                ->references("id")
+                ->on("traffic_share_groups")
+                ->onUpdate("cascade")
+                ->onDelete("cascade")
+            ;
+
+            $table
+                ->foreign("zone_id")
+                ->references("id")
+                ->on("zones")
+                ->onUpdate("cascade")
+                ->onDelete("cascade")
+            ;
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('traffic_share_group_has_zones');
+    }
+}

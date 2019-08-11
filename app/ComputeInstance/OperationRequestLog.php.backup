@@ -1,0 +1,17 @@
+<?php
+
+namespace App\ComputeInstance;
+
+use Illuminate\Database\Eloquent\Model;
+
+class OperationRequestLog extends Model
+{
+    protected $table = "compute_instance_operation_request_logs";
+
+    protected $guarded = [];
+
+    public function request()
+    {
+        return $this->belongsTo(OperationRequest::class, "operation_request_id");
+    }
+}

@@ -1,0 +1,22 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use YunInternet\CCMSCommon\Model\CompositeKey;
+
+class TrafficShareGroupHasZone extends Model
+{
+    use CompositeKey;
+
+    public $incrementing = false;
+
+    public $timestamps = false;
+
+    protected $primaryKey = [
+        "traffic_share_group_id",
+        "zone_id",
+    ];
+
+    protected $guarded = [];
+}

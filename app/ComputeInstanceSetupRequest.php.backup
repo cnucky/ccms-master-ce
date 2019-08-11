@@ -1,0 +1,23 @@
+<?php
+
+namespace App;
+
+use App\Jobs\ComputeInstance\Setup;
+use Illuminate\Database\Eloquent\Model;
+
+class ComputeInstanceSetupRequest extends Model
+{
+    protected $guarded = [];
+
+    protected $hidden = ["password"];
+
+    public function instance()
+    {
+        return $this->belongsTo(ComputeInstance::class, "instance_id");
+    }
+
+    public function dispatch()
+    {
+        Setup::dispatch($this);
+    }
+}

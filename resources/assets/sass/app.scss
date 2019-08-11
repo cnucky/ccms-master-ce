@@ -1,0 +1,84 @@
+body {
+  /* background-color: #f4f6f7; */
+}
+
+// Bootstrap
+// @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Semantic UI
+// @import "./../../../semantic/dist/semantic.min.css";
+
+@import "./font-awesome-4.7.0/css/font-awesome.min.css";
+
+@import "~animate.css/animate.min.css";
+
+@import '~axios-progress-bar/dist/nprogress.css';
+
+#nprogress .spinner {
+  top: 60px !important;
+  right: 30px;
+}
+
+#app {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.ui.dimmer {
+  z-index: 2000 !important;
+}
+
+.no-shadow {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.no-border-radius {
+  border-radius: 0;
+}
+
+.ui.floating.positive.message {
+  -webkit-box-shadow: 0 0 0 1px #a3c293 inset, 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+  box-shadow: 0 0 0 1px #a3c293 inset, 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+}
+
+.ui.floating.warning.message {
+  -webkit-box-shadow: 0 0 0 1px #c9ba9b inset, 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+  box-shadow: 0 0 0 1px #c9ba9b inset, 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+}
+
+.ui.floating.info.message {
+  -webkit-box-shadow: 0 0 0 1px #a9d5de inset, 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+  box-shadow: 0 0 0 1px #a9d5de inset, 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+}
+
+.ui.floating.negative.message {
+  -webkit-box-shadow: 0 0 0 1px #e0b4b4 inset, 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+  box-shadow: 0 0 0 1px #e0b4b4 inset, 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+}
+
+label.required:after {
+  content: " *";
+  color: red;
+}
+
+.ui.mini.dropdown {
+  font-size: .78571429em;
+}
+
+.ui.mini.dropdown > .dropdown.icon {
+  line-height: .78571429em !important;
+}
+
+.ui.mini.dropdown .menu > .item {
+  font-size: .78571429em;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .35) !important;
+}

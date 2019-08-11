@@ -1,0 +1,53 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateZoneAvailableComputeInstancePackagesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('zone_available_packages', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('zone_id');
+            $table->unsignedInteger('compute_instance_package_id');
+            $table->integer('stock')->nullable();
+
+            $table->decimal('override_price_per_hour', 8, 4)->nullable();
+
+            $table->timestamps();
+
+            $table
+                ->foreign("zone_id")
+                ->references("id")
+                ->on("zones")
+                ->onUpdate("cascade")
+                ->onDelete("cascade")
+            ;
+
+            $table
+                ->foreign("compute_instance_package_id")
+                ->references("id")
+                ->on("compute_instance_packages")
+                ->onUpdate("cascade")
+                ->onDelete("cascade")
+            ;
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('zone_available_packages');
+    }
+}
